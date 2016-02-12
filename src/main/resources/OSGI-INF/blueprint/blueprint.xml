@@ -1,0 +1,1264 @@
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+    xmlns:jpa="http://aries.apache.org/xmlns/jpa/v1.0.0"
+    xmlns:tx="http://aries.apache.org/xmlns/transactions/v1.0.0"
+    xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0">
+
+    <!-- The JTA TransactionManager used when setting rollbackonly. -->
+    <reference id="txManager"
+                    interface="javax.transaction.TransactionManager"/>
+
+    <!-- Application -->
+    <service id="applicationDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ApplicationDao"
+        ref="applicationDaoImpl">
+    </service>
+
+    <bean id="applicationDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ApplicationDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+    <!-- FCSOfficeParish -->
+    <service id="fcsOfficeParishDao"
+        interface="uk.gov.scotland.afrc.applications.dao.FCSOfficeParishDao"
+        ref="fcsOfficeParishDaoImpl">
+    </service>
+    
+    <bean id="fcsOfficeParishDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.FCSOfficeParishDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+     <service id="relatedApplicationsDao"
+        interface="uk.gov.scotland.afrc.applications.dao.RelatedApplicationsDao"
+        ref="relatedApplicationsDaoImpl">
+    </service>
+
+    <bean id="relatedApplicationsDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.RelatedApplicationsDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+	</bean>
+    
+    <service id="assessmentDao"
+        interface="uk.gov.scotland.afrc.applications.dao.AssessmentDao"
+        ref="assessmentDaoImpl">
+    </service>
+
+    <bean id="assessmentDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.AssessmentDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+
+    <service id="assessmentTypeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.AssessmentTypeDao"
+        ref="assessmentTypeDaoImpl">
+    </service>
+
+    <bean id="assessmentTypeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.AssessmentTypeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+    <service id="operationalCustomerDao"
+        interface="uk.gov.scotland.afrc.applications.dao.OperationalCustomerDao"
+        ref="operationalCustomerDaoImpl">
+    </service>
+
+    <bean id="operationalCustomerDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.OperationalCustomerDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+    <service id="eligibleLandUseDao"
+        interface="uk.gov.scotland.afrc.applications.dao.EligibleLandUseDao"
+        ref="eligibleLandUseDaoImpl">
+    </service>
+    
+    <bean id="eligibleLandUseDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.EligibleLandUseDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+
+    <service id="entitlementCatgDao"
+        interface="uk.gov.scotland.afrc.applications.dao.EntitlementCatgDao"
+        ref="entitlementCatgDaoImpl">
+    </service>
+    
+    <bean id="entitlementCatgDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.EntitlementCatgDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+
+    <service id="entitlementRouteDao"
+        interface="uk.gov.scotland.afrc.applications.dao.EntitlementRouteDao"
+        ref="entitlementRouteDaoImpl">
+    </service>
+    
+    <bean id="entitlementRouteDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.EntitlementRouteDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+
+    <service id="appEntitlementCatgStsTypeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.AppEntitlementCatgStsTypeDao"
+        ref="appEntitlementCatgStsTypeDaoImpl">
+    </service>
+
+    <bean id="appEntitlementCatgStsTypeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.AppEntitlementCatgStsTypeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+
+    <service id="locationDao"
+        interface="uk.gov.scotland.afrc.applications.dao.LocationDao"        
+        ref="locationDaoImpl">
+    </service>
+    
+    <bean id="locationDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.LocationDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+  
+    <service id="appLndPrclDao"
+        interface="uk.gov.scotland.afrc.applications.dao.AppLndPrclDao"
+        ref="appLndPrclDaoImpl">
+    </service>
+    <bean id="appLndPrclDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.AppLndPrclDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    <!-- Adjustment Start -->
+    <service id="adjustmentDao"
+        interface="uk.gov.scotland.afrc.applications.dao.AdjustmentDao"
+        ref="adjustmentDaoImpl">
+    </service>
+    <bean id="adjustmentDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.AdjustmentDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>  
+    
+    <service id="adjustmentValueDao"
+        interface="uk.gov.scotland.afrc.applications.dao.AdjustmentValueDao"
+        ref="adjustmentValueDaoImpl">
+    </service>
+    <bean id="adjustmentValueDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.AdjustmentValueDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>    
+    
+    <service id="adjustmentReasonTypeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.AdjustmentReasonTypeDao"
+        ref="adjustmentReasonTypeDaoImpl">
+    </service>
+    <bean id="adjustmentReasonTypeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.AdjustmentReasonTypeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>   
+    
+    <!-- Adjustment End -->
+
+    <!-- Scheme -->
+    <service id="schemeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.SchemeDao"
+        ref="schemeDaoImpl">
+    </service>
+
+    <bean id="schemeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.SchemeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+    <!-- Scheme Option-->
+    <service id="schemeOptionDao"
+        interface="uk.gov.scotland.afrc.applications.dao.SchemeOptionDao"
+        ref="schemeOptionDaoImpl">
+    </service>
+
+    <bean id="schemeOptionDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.SchemeOptionDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+
+  <!-- Scheme Option-->
+    <service id="unitOfMeasurementTypeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.UnitOfMeasurementTypeDao"
+        ref="unitOfMeasurementTypeDaoImpl">
+    </service>
+
+    <bean id="unitOfMeasurementTypeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.UnitOfMeasurementTypeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+
+    <!-- Application Scheme Option -->
+    <service id="applicationSchemeOptionDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ApplicationSchemeOptionDao"
+        ref="applicationSchemeOptionDaoImpl">
+    </service>
+
+    <bean id="applicationSchemeOptionDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ApplicationSchemeOptionDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+    <service id="scheduleItemDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ScheduleItemDao"
+        ref="scheduleItemDaoImpl">
+    </service>
+    
+    <bean id="scheduleItemDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ScheduleItemDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    <!-- Application Scheme -->
+    <service id="applicationSchemeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ApplicationSchemeDao"
+        ref="applicationSchemeDaoImpl">
+    </service>
+
+    <bean id="applicationSchemeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ApplicationSchemeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+
+    <!-- ApplicationType -->
+    <service id="applicationTypeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ApplicationTypeDao"
+        ref="applicationTypeDaoImpl">
+    </service>
+
+    <bean id="applicationTypeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ApplicationTypeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+    <!-- ApplicationStatusType -->
+    <service id="applicationStatusTypeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ApplicationStatusTypeDao"
+        ref="applicationStatusTypeDaoImpl">
+    </service>
+
+    <bean id="applicationStatusTypeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ApplicationStatusTypeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+
+    <!-- Claim -->
+    <service id="LandUseClaimDao"
+        interface="uk.gov.scotland.afrc.applications.dao.LandUseClaimDao"
+        ref="landUseClaimDaoImpl">
+    </service>
+
+    <bean id="landUseClaimDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.LandUseClaimDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+
+    <!-- AnimalClaim -->
+    <service id="animalClaimDao"
+        interface="uk.gov.scotland.afrc.applications.dao.AnimalClaimDao"
+        ref="animalClaimDaoImpl">
+    </service>
+
+    <bean id="animalClaimDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.AnimalClaimDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+
+    <!-- AnimalLocation -->
+    <service id="animalLocationDao"
+        interface="uk.gov.scotland.afrc.applications.dao.AnimalLocationDao"
+        ref="animalLocationDaoImpl">
+    </service>
+
+    <bean id="animalLocationDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.AnimalLocationDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+        
+        <!-- ApplicationSection -->
+    <service id="applicationSectionDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ApplicationSectionDao"
+        ref="applicationSectionDaoImpl">
+    </service>
+
+    <bean id="applicationSectionDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ApplicationSectionDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+        <property name="applicationSectionTypeDao" ref="applicationSectionTypeDaoImpl" />
+    </bean>
+    
+    <service id="applicationSectionDaoNoVersion"
+        interface="uk.gov.scotland.afrc.applications.dao.ApplicationSectionDaoNoVersion"
+        ref="applicationSectionDaoNoVersionImpl">
+    </service>
+
+    <bean id="applicationSectionDaoNoVersionImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ApplicationSectionDaoNoVersionImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+    <!-- ApplicationSectionTypeDao -->
+    <service id="applicationSectionTypeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ApplicationSectionTypeDao"
+        ref="applicationSectionTypeDaoImpl">
+    </service>
+    
+    <bean id="applicationSectionTypeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ApplicationSectionTypeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+    <!-- ApplicationSectionStatusTypeDao -->
+    <service id="applicationSectionStatusTypeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ApplicationSectionStatusTypeDao"
+        ref="applicationSectionStatusTypeDaoImpl">
+    </service>
+    
+    <bean id="applicationSectionStatusTypeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ApplicationSectionStatusTypeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+    <!-- CustomerLocation -->
+    <service id="customerLocationDao"
+        interface="uk.gov.scotland.afrc.applications.dao.CustomerLocationDao"
+        ref="customerLocationDaoImpl">
+    </service>
+
+    <bean id="customerLocationDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.CustomerLocationDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+    <!-- Land Use Type -->
+    
+    <!-- LandUse-->
+    <service id="landUseTypeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.LandUseTypeDao"
+        ref="landUseTypeDaoImpl">
+    </service>
+
+    <bean id="landUseTypeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.LandUseTypeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+
+
+    <!-- Land Use Area -->
+    <service id="landUseAreaDao"
+        interface="uk.gov.scotland.afrc.applications.dao.LandUseAreaDao"
+        ref="landUseAreaDaoImpl">
+    </service>
+
+    <bean id="landUseAreaDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.LandUseAreaDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+    
+     <!-- Lpis Feature -->
+    <service id="lpisFeatureDao"
+        interface="uk.gov.scotland.afrc.applications.dao.LpisFeatureDao"
+        ref="lpisFeatureDaoImpl">
+    </service>
+
+    <bean id="lpisFeatureDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.LpisFeatureDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+
+    <!-- Land Use Details -->
+    <service id="landUseDetailsDao"
+        interface="uk.gov.scotland.afrc.applications.dao.LandUseDetailsDao"
+        ref="landUseDetailsDaoImpl">
+    </service>
+
+    <bean id="landUseDetailsDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.LandUseDetailsDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+    <!-- Application Land Parcel -->
+    <service id="AppLndPrclDao"
+        interface="uk.gov.scotland.afrc.applications.dao.AppLndPrclDao"
+        ref="AppLndPrclDaoImpl">
+    </service>
+
+    <bean id="AppLndPrclDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.AppLndPrclDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+
+    <!-- Lpis Land Parcel -->
+    <service id="LpisLandParcelDao"
+        interface="uk.gov.scotland.afrc.applications.dao.LpisLandParcelDao"
+        ref="LpisLandParcelDaoImpl">
+    </service>
+
+    <bean id="LpisLandParcelDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.LpisLandParcelDaoImpl">
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+    </bean>
+    
+    <!-- Land Parcel Classification -->
+    <service id="LndPrclClassificationDao"
+        interface="uk.gov.scotland.afrc.applications.dao.LndPrclClassificationDao"
+        ref="LndPrclClassificationDaoImpl">
+    </service>
+
+    <bean id="LndPrclClassificationDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.LndPrclClassificationDaoImpl">
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+    </bean>
+    
+    <!--  Application Question Type -->
+    <service id="applicationQuestionTypeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ApplicationQuestionTypeDao"
+        ref="applicationQuestionTypeDaoImpl">
+    </service>
+
+    <bean id="applicationQuestionTypeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ApplicationQuestionTypeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+
+    <!--  Application Question Type Response-->
+    <service id="applicationQuestionTypeResponseDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ApplicationQuestionTypeResponseDao"
+        ref="applicationQuestionTypeResponseDaoImpl">
+    </service>
+
+    <bean id="applicationQuestionTypeResponseDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ApplicationQuestionTypeResponseDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+    <!--  Application Question Choice Type -->
+    <service id="applicationQuestionChoiceTypeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ApplicationQuestionChoiceTypeDao"
+        ref="applicationQuestionChoiceTypeDaoImpl">
+    </service>
+
+    <bean id="applicationQuestionChoiceTypeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ApplicationQuestionChoiceTypeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+    <!-- Collaborating Direct Customer DAO -->
+    <service id="collaboratingDirectCustomerDao"
+        interface="uk.gov.scotland.afrc.applications.dao.CollaboratingDirectCustomerDao"
+        ref="collaboratingDirectCustomerDaoImpl">
+    </service>
+
+    <bean id="collaboratingDirectCustomerDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.CollaboratingDirectCustomerDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+        
+    <!-- Livestock -->
+    <service id="livestockDao"
+        interface="uk.gov.scotland.afrc.applications.dao.LivestockDao"
+        ref="livestockDaoImpl">
+    </service>
+
+    <bean id="livestockDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.LivestockDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+     <!-- Livestock Type -->
+    <service id="livestockTypeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.LivestockTypeDao"
+        ref="livestockTypeDaoImpl">
+    </service>
+
+    <bean id="livestockTypeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.LivestockTypeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+     <!-- Livestock Category Type -->
+    <service id="livestockCatgTypeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.LivestockCatgTypeDao"
+        ref="livestockCatgTypeDaoImpl">
+    </service>
+
+    <bean id="livestockCatgTypeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.LivestockCatgTypeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+
+     <!-- Currency Type -->
+    <service id="currencyTypeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.CurrencyTypeDao"
+        ref="currencyTypeDaoImpl">
+    </service>
+
+    <bean id="currencyTypeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.CurrencyTypeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+   
+     <!-- Contract -->
+    <service id="contractDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ContractDao"
+        ref="contractDaoImpl">
+    </service>
+
+    <bean id="contractDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ContractDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+
+        <!-- Application validation error -->
+    <service id="appValidationErrDao"
+        interface="uk.gov.scotland.afrc.applications.dao.AppValidationErrDao"
+        ref="appValidationErrDaoImpl">
+    </service>
+
+    <bean id="appValidationErrDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.AppValidationErrDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+
+        <!-- Validation justification type -->
+    <service id="validationJustificationTypeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ValidationJustificationTypeDao"
+        ref="validationJustificationTypeDaoImpl">
+    </service>
+
+    <bean id="validationJustificationTypeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ValidationJustificationTypeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>    
+
+        <!-- Validation type -->
+    <service id="validationTypeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ValidationTypeDao"
+        ref="validationTypeDaoImpl">
+    </service>
+
+    <bean id="validationTypeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ValidationTypeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>    
+
+     <service id="locationCommonGrazingDao"
+        interface="uk.gov.scotland.afrc.applications.dao.LocationCommonGrazingDao"        
+        ref="locationCommonGrazingDaoImpl">
+    </service>
+    
+    <bean id="locationCommonGrazingDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.LocationCommonGrazingDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+       <!--  <property name="txManager" ref="txManager"/> -->
+    </bean>
+    
+	<service id="applicationCommonGrazingDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ApplicationCommonGrazingDao"        
+        ref="applicationCommonGrazingDaoImpl">
+    </service>
+    
+    <bean id="applicationCommonGrazingDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ApplicationCommonGrazingDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+       <!--  <property name="txManager" ref="txManager"/> -->
+    </bean>
+    
+    <service id="applicationCommonGrazingShareDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ApplicationCommonGrazingShareDao"        
+        ref="applicationCommonGrazingShareDaoImpl">
+    </service>
+    
+    <bean id="applicationCommonGrazingShareDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ApplicationCommonGrazingShareDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+       <!--  <property name="txManager" ref="txManager"/> -->
+    </bean>
+
+	<!-- Location Common Grazing History -->
+	<service id="locationCommonGrazingHistoryDao"
+		interface="uk.gov.scotland.afrc.applications.dao.LocationCommonGrazingHistoryDao"
+		ref="locationCommonGrazingHistoryDaoImpl">
+	</service>
+
+	<bean id="locationCommonGrazingHistoryDaoImpl"
+		class="uk.gov.scotland.afrc.applications.dao.impl.LocationCommonGrazingHistoryDaoImpl">
+		<tx:transaction method="*" value="Required" />
+		<jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+	</bean>
+
+	<!-- Location Common Grazing Adjustment History -->
+	<service id="cgShareAdjustmentHistoryDao"
+		interface="uk.gov.scotland.afrc.applications.dao.CgShareAdjustmentHistoryDao"
+		ref="cgShareAdjustmentHistoryDaoImpl">
+	</service>
+
+	<bean id="cgShareAdjustmentHistoryDaoImpl"
+		class="uk.gov.scotland.afrc.applications.dao.impl.CgShareAdjustmentHistoryDaoImpl">
+		<tx:transaction method="*" value="Required" />
+		<jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+		<property name="txManager" ref="txManager" />
+	</bean>
+	<!-- Eligible Capital Item Type -->
+
+	<service id="eligibleCapitalItemTypeDao"
+		interface="uk.gov.scotland.afrc.applications.dao.EligibleCapitalItemTypeDao"
+		ref="eligibleCapitalItemTypeDaoImpl">
+	</service>
+
+	<bean id="eligibleCapitalItemTypeDaoImpl"
+		class="uk.gov.scotland.afrc.applications.dao.impl.EligibleCapitalItemTypeDaoImpl">
+		<tx:transaction method="*" value="Required" />
+		<jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+		<property name="txManager" ref="txManager" />
+	</bean>
+
+	
+
+	<service id="claimDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ClaimDao"        
+        ref="claimDaoImpl">
+    </service>
+    
+    <bean id="claimDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ClaimDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+    <service id="annualRecurrentItemDao"
+        interface="uk.gov.scotland.afrc.applications.dao.AnnualRecurrentItemDao"        
+        ref="annualRecurrentItemDaoImpl">
+    </service>
+    
+    <bean id="annualRecurrentItemDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.AnnualRecurrentItemDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+      
+    <service id="annualRecurrentRotationYrDao"
+        interface="uk.gov.scotland.afrc.applications.dao.AnnualRecurrentRotationYrDao"        
+        ref="annualRecurrentRotationYrDaoImpl">
+    </service>
+    
+    <bean id="annualRecurrentRotationYrDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.AnnualRecurrentRotationYrDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+     <service id="capitalItemDao"
+        interface="uk.gov.scotland.afrc.applications.dao.CapitalItemDao"        
+        ref="capitalItemDaoImpl">
+    </service>
+    
+    <bean id="capitalItemDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.CapitalItemDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+     <service id="capitalItemTypeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.CapitalItemTypeDao"        
+        ref="capitalItemTypeDaoImpl">
+    </service>
+    
+    <bean id="capitalItemTypeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.CapitalItemTypeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+    <service id="cgShareClaimDao"
+        interface="uk.gov.scotland.afrc.applications.dao.CgShareClaimDao"        
+        ref="cgShareClaimDaoImpl">
+    </service>
+    
+    <bean id="cgShareClaimDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.CgShareClaimDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+    <service id="cgShareLndUseAreaDao"
+        interface="uk.gov.scotland.afrc.applications.dao.CgShareLndUseAreaDao"        
+        ref="cgShareLndUseAreaDaoImpl">
+    </service>
+    
+    <bean id="cgShareLndUseAreaDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.CgShareLndUseAreaDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    <service id="appEntitlementCatgDao"
+        interface="uk.gov.scotland.afrc.applications.dao.AppEntitlementCatgDao"        
+        ref="appEntitlementCatgDaoImpl">
+    </service>
+    
+    <bean id="appEntitlementCatgDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.AppEntitlementCatgDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+    <service id="landUseActivityTypeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.LandUseActivityTypeDao"        
+        ref="landUseActivityTypeDaoImpl">
+    </service>
+    
+    <bean id="landUseActivityTypeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.LandUseActivityTypeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+ 
+    <service id="locationClassificationDao"
+        interface="uk.gov.scotland.afrc.applications.dao.LocationClassificationDao"        
+        ref="locationClassificationDaoImpl">
+    </service>
+    
+    <bean id="locationClassificationDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.LocationClassificationDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+
+    <service id="schemeOptPaymentRateBandDao"
+             interface="uk.gov.scotland.afrc.applications.dao.SchemeOptPaymentRateBandDao"
+             ref="schemeOptPaymentRateBandDaoImpl">
+    </service>
+
+    <bean id="schemeOptPaymentRateBandDaoImpl"
+          class="uk.gov.scotland.afrc.applications.dao.impl.SchemeOptPaymentRateBandDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    <service id="applicationQuestionEligibleCapitalItemDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ApplicationQuestionEligibleCapitalItemDao"        
+        ref="applicationQuestionEligibleCapitalItemDaoImpl">
+    </service>
+    
+    <bean id="applicationQuestionEligibleCapitalItemDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ApplicationQuestionEligibleCapitalItemDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+
+    <service id="greeningStatusDao"
+             interface="uk.gov.scotland.afrc.applications.dao.GreeningStatusDao"
+             ref="greeningStatusDaoImpl">
+    </service>
+
+    <bean id="greeningStatusDaoImpl"
+          class="uk.gov.scotland.afrc.applications.dao.impl.GreeningStatusDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+    <service id="appEvidenceFulfilmentDao"
+        interface="uk.gov.scotland.afrc.applications.dao.AppEvidenceFulfilmentDao"        
+        ref="appEvidenceFulfilmentDaoImpl">
+    </service>
+    
+    <bean id="appEvidenceFulfilmentDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.AppEvidenceFulfilmentDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>   
+
+    <service id="evidenceRequirementTypeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.EvidenceRequirementTypeDao"        
+        ref="evidenceRequirementTypeDaoImpl">
+    </service>
+    
+    <bean id="evidenceRequirementTypeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.EvidenceRequirementTypeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>  
+    
+    <service id="lmoContractDetailsDao"
+        interface="uk.gov.scotland.afrc.applications.dao.LMOContractDetailsDao"
+        ref="lmoContractDetailsDaoImpl">
+    </service>
+
+    <bean id="lmoContractDetailsDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.LMOContractDetailsDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>    
+    
+    <service id="additionalTaskInfoDao"
+        interface="uk.gov.scotland.afrc.applications.dao.AdditionalTaskInfoDao"        
+        ref="additionalTaskInfoDaoImpl">
+    </service>
+    
+    <bean id="additionalTaskInfoDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.AdditionalTaskInfoDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>    
+
+     <service id="applicationStatusReasonTypeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ApplicationStatusReasonTypeDao"        
+        ref="applicationStatusReasonTypeDaoImpl">
+    </service>
+    
+     <bean id="applicationStatusReasonTypeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ApplicationStatusReasonTypeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />   
+         <property name="txManager" ref="txManager"/>   
+    </bean>   
+    
+	<!-- LandUse-->
+    <service id="cropFamilyTypeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.CropFamilyTypeDao"
+        ref="cropFamilyTypeDaoImpl">
+    </service>
+
+    <bean id="cropFamilyTypeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.CropFamilyTypeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>     
+    
+	<service id="safLandParcelSummaryRPLMODao"
+        interface="uk.gov.scotland.afrc.applications.dao.SafLandParcelSummaryRPMLODao"
+        ref="safLandParcelSummaryRPLMODaoImpl">
+    </service>
+
+    <bean id="safLandParcelSummaryRPLMODaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.SafLandParcelSummaryRPLMODaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+	<service id="safCgSchemeGreeningSummaryDao"
+        interface="uk.gov.scotland.afrc.applications.dao.SafCgSchemeGreeningSummaryDao"
+        ref="safCgSchemeGreeningSummaryDaoImpl">
+    </service>
+
+    <bean id="safCgSchemeGreeningSummaryDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.SafCGSchemeGreeningSummaryDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+    <service id="safCgSchemeLocationSummaryDao"
+        interface="uk.gov.scotland.afrc.applications.dao.SafCgSchemeLocationSummaryDao"
+        ref="safCgSchemeLocationSummaryDaoImpl">
+    </service>
+
+    <bean id="safCgSchemeLocationSummaryDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.SafCGSchemeLocationSummaryDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+     <service id="safCgSchemeRPSummaryDao"
+        interface="uk.gov.scotland.afrc.applications.dao.SafCgSchemeRPSummaryDao"
+        ref="safCgSchemeRPSummaryDaoImpl">
+    </service>
+
+    <bean id="safCgSchemeRPSummaryDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.SafCGSchemeRPSummaryDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+    <service id="safLandCGShareSummaryDao"
+        interface="uk.gov.scotland.afrc.applications.dao.SafLandCGShareSummaryDao"
+        ref="safLandCGShareSummaryDaoImpl">
+    </service>
+
+    <bean id="safLandCGShareSummaryDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.SafLandCGShareSummaryDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+    <service id="safLandCGSummaryDao"
+        interface="uk.gov.scotland.afrc.applications.dao.SafLandCGSummaryDao"
+        ref="safLandCGSummaryDaoImpl">
+    </service>
+
+    <bean id="safLandCGSummaryDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.SafLandCGSummaryDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+
+	<service id="safLandParcelsDao"
+        interface="uk.gov.scotland.afrc.applications.dao.SafLandParcelsDao"
+        ref="safLandParcelsDaoImpl">
+    </service>
+
+    <bean id="safLandParcelsDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.SafLandParcelsDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+	<service id="safLandUseClaimsDao"
+        interface="uk.gov.scotland.afrc.applications.dao.SafLandUseClaimsDao"
+        ref="safLandUseClaimsDaoImpl">
+    </service>
+
+    <bean id="safLandUseClaimsDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.SafLandUseClaimsDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+        
+
+    <service id="validationTypeCatgDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ValidationTypeCatgDao"        
+        ref="validationTypeCatgDaoImpl">
+    </service>
+    
+    <bean id="validationTypeCatgDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ValidationTypeCatgDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+
+    <service id="validationErrorTypeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ValidationErrorTypeDao"        
+        ref="validationErrorTypeDaoImpl">
+    </service>
+    
+    <bean id="validationErrorTypeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ValidationErrorTypeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+    	
+	<service id="approvalDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ApprovalDao"        
+        ref="approvalDaoImpl">
+    </service>
+    
+    <bean id="approvalDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ApprovalDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>    
+    
+    <service id="approvalOutcomeTypeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ApprovalOutcomeTypeDao"        
+        ref="approvalOutcomeTypeDaoImpl">
+    </service>
+    
+    <bean id="approvalOutcomeTypeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ApprovalOutcomeTypeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>  
+    
+    <service id="approvalChangeReasonTypeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ApprovalChangeReasonTypeDao"        
+        ref="approvalChangeReasonTypeDaoImpl">
+    </service>
+    
+    <bean id="approvalChangeReasonTypeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ApprovalChangeReasonTypeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+
+    
+    <service id="dataChangeEventDao"
+        interface="uk.gov.scotland.afrc.applications.dao.DataChangeEventDao"        
+        ref="dataChangeEventDaoImpl">
+    </service>
+    
+    <bean id="dataChangeEventDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.DataChangeEventDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean> 
+    
+    <service id="locationCGHistoryDao"
+        interface="uk.gov.scotland.afrc.applications.dao.LocationCGHistoryDao"        
+        ref="locationCGHistoryDaoImpl">
+    </service>
+    
+    <bean id="locationCGHistoryDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.LocationCGHistoryDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>    
+      
+      	<service id="cgShareReasonTypeDao"
+		interface="uk.gov.scotland.afrc.applications.dao.CgShareReasonTypeDao"
+		ref="cgShareReasonTypeDaoImpl">
+	</service>
+
+	<bean id="cgShareReasonTypeDaoImpl"
+		class="uk.gov.scotland.afrc.applications.dao.impl.CgShareReasonTypeDaoImpl">
+		<tx:transaction method="*" value="Required" />
+		<jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+		<property name="txManager" ref="txManager" />
+	</bean>
+      
+    
+     <service id="dataChangeEventArchiveDao"
+        interface="uk.gov.scotland.afrc.applications.dao.DataChangeEventArchiveDao"        
+        ref="dataChangeEventArchiveDaoImpl">
+    </service>
+    
+    <bean id="dataChangeEventArchiveDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.DataChangeEventArchiveDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>  
+    
+    <service id="occupancyDao"
+        interface="uk.gov.scotland.afrc.applications.dao.OccupancyDao"        
+        ref="occupancyDaoImpl">
+    </service>
+    
+    <bean id="occupancyDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.OccupancyDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+    
+      <service id="assessmentElementDao"
+        interface="uk.gov.scotland.afrc.applications.dao.AssessmentElementDao"        
+        ref="assessmentElementDaoImpl">
+    </service>
+    
+     <bean id="assessmentElementDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.AssessmentElementDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>  
+	
+	        <service id="applicationSuspensionDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ApplicationSuspensionDao"        
+        ref="applicationSuspensionDaoImpl">
+    </service>
+    
+    <bean id="applicationSuspensionDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ApplicationSuspensionDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>    
+    
+	<service id="applicationSuspensionReasonDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ApplicationSuspensionReasonDao"        
+        ref="applicationSuspensionReasonDaoImpl">
+    </service>
+    
+    <bean id="applicationSuspensionReasonDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ApplicationSuspensionReasonDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>    
+    
+	<service id="applicationSuspensionTypeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ApplicationSuspensionTypeDao"        
+        ref="applicationSuspensionTypeDaoImpl">
+    </service>
+    
+    <bean id="applicationSuspensionTypeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ApplicationSuspensionTypeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>
+
+
+
+    <service id="revalidationQueueDao"
+        interface="uk.gov.scotland.afrc.applications.dao.RevalidationQueueDao"        
+        ref="revalidationQueueDaoImpl">
+    </service>
+    
+    <bean id="revalidationQueueDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.RevalidationQueueDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean> 
+    
+    <service id="revalidationQueueArchiveDao"
+        interface="uk.gov.scotland.afrc.applications.dao.RevalidationQueueArchiveDao"        
+        ref="revalidationQueueArchiveDaoImpl">
+    </service>
+    
+    <bean id="revalidationQueueArchiveDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.RevalidationQueueArchiveDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean> 
+    
+	<service id="applicationSuspensionLevelTypeDao"
+        interface="uk.gov.scotland.afrc.applications.dao.ApplicationSuspensionLevelTypeDao"        
+        ref="applicationSuspensionLevelTypeDaoImpl">
+    </service>
+    
+    <bean id="applicationSuspensionLevelTypeDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.ApplicationSuspensionLevelTypeDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean>  
+    
+     <service id="additionalProcessInfoDao"
+        interface="uk.gov.scotland.afrc.applications.dao.AdditionalProcessInfoDao"        
+        ref="additionalProcessInfoDaoImpl">
+    </service>
+    
+    <bean id="additionalProcessInfoDaoImpl"
+        class="uk.gov.scotland.afrc.applications.dao.impl.AdditionalProcessInfoDaoImpl">
+        <tx:transaction method="*" value="Required" />
+        <jpa:context property="entityManager" unitname="ApplicationsPersistenceUnit" />
+        <property name="txManager" ref="txManager"/>
+    </bean> 
+</blueprint>

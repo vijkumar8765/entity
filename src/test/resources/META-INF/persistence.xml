@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+             version="1.0">
+    <persistence-unit name="testPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+        <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+
+        <class>uk.gov.scotland.afrc.applications.model.base.BaseTable</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.ApplicationDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.ApplicationTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.ApplicationSectionDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.ApplicationSectionDBONoVersion</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.AnimalClaimDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.AnimalLocationDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.CustomerLocationDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.SchemeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.SchemeOptionDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.ApplicationSchemeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.ApplicationSchemePK</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.ApplicationSchemeOptionDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.ApplicationSchemeOptionPK</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.LandUseClaimDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.ApplicationSectionTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.ApplicationSectionStatusTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.LpisLandParcelDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.AppValidationErrDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.ValidationErrorTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.ValidationTypeCatgDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.ValidationTypeClassDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.ValidationTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.ValidationJustificationTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.DocSubCategoryType</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.LandUseAreaDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.LandUseTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.AppLndPrclDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.OptionGroupDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.OptPeriodTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.ApplicationQuestionTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.ApplicationQuestionChoiceTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.ApplicationQuestionTypeResponseDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.LivestockDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.LivestockCatgTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.LivestockTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.CurrencyTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.CollaboratingDirectCustomerDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.AnnualRecurrentItemDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.CapitalItemDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.CapitalItemTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.CapitalTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.EligibleCapitalItemTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.ContractDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.ScheduleItemDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.ClaimDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.EligibleLandUseDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.LndPrclClassificationDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.LndPrclClassificationTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.FeatureTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.UnitOfMeasurementTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.LocationCommonGrazingDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.LpisFeatureDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.AssessmentDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.CnvFactorTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.CgShareClaimDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.CgShareLndUseAreaDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.ApplicationCommonGrazingDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.ApplicationCommonGrazingShareDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.AppEntitlementCatgDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.AnnualRecurrentRotationYrDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.LandUseActivityTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.SchemeOptionTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.SchemeOptionDisplayDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.SchemeOptBehavrClassDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.SchemeOptBehavrClassTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.LocationClassificationDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.LocationClassificationTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.ApplicationQuestionChoiceFactrDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.ApplicationQuestionChoiceFactrTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.SchemeOptPaymentRateBandDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.PaymentRegionDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.PaymentRateBandDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.EntitlementCatgDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.EntitlementRouteDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.QuestionMandatoryTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.AppEntitlementCatgStsTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.AppQuestEligibleCapitalItemDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.ApplicationStatusTypeDBO</class>
+        <class>uk.gov.scotland.afrc.applications.model.domain.GreeningStatusDBO</class>
+		<class>uk.gov.scotland.afrc.applications.model.domain.ApprovalChangeReasonTypeDBO</class>
+		<class>uk.gov.scotland.afrc.applications.model.domain.CgShareAudjustmentHistoryDBO</class>		
+		<class>uk.gov.scotland.afrc.applications.model.domain.LocationCommonGrazingHistoryDBO</class>
+       
+       
+		<class>uk.gov.scotland.afrc.applications.model.domain.CropFamilyTypeDBO</class>
+		<class>uk.gov.scotland.afrc.applications.model.domain.SafLandParcelSummaryRPLMO</class>				
+		<class>uk.gov.scotland.afrc.applications.model.domain.SafLandCGSummary</class>
+		<class>uk.gov.scotland.afrc.applications.model.domain.SafLandCGShareSummary</class>
+		<class>uk.gov.scotland.afrc.applications.model.domain.SafCgSchemeRPSummary</class>
+		<class>uk.gov.scotland.afrc.applications.model.domain.SafCgSchemeLocationSummary</class>
+		<class>uk.gov.scotland.afrc.applications.model.domain.SafCgSchemeGreeningSummary</class>
+		<class>uk.gov.scotland.afrc.applications.model.domain.SafLandParcels</class>
+		<class>uk.gov.scotland.afrc.applications.model.domain.SafLandUseClaims</class>		
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+<!-- commented on purpose -->
+<!-- need to validate the usage of these params -->
+        <!-- properties>
+            <property name="openjpa.ConnectionURL" value="jdbc:h2:mem:dbunit_database;DB_CLOSE_DELAY=-1" />
+            <property name="openjpa.ConnectionDriverName" value="org.h2.Driver"/>
+            <property name="openjpa.ConnectionUserName" value="sa"/>
+            <property name="openjpa.ConnectionPassword" value=""/>
+            <property name="openjpa.Log" value="DefaultLevel=WARN, Tool=INFO"/>
+            <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=false)"/>
+        </properties-->
+
+    </persistence-unit>
+</persistence>
